@@ -1,0 +1,109 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #dceef9, #e9fdf3);
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+.login-card {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: fadeInDown 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.login-header {
+  background-color: #2e5d8e;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.login-body {
+  padding: 2rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.input-group .icon-left {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 1rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.7rem 0.7rem 0.7rem 2.3rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: #2e5d8e;
+  outline: none;
+}
+
+.remember-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.remember-row input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.login-body button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #2e5d8e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-body button:hover {
+  background-color: #1e3f66;
+}
+
+.back-link {
+  display: block;
+  margin-top: 1.2rem;
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

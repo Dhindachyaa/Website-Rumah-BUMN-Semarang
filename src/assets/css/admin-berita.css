@@ -1,0 +1,304 @@
+/* ===================== */
+/* ADMIN BERITA PAGE BASE */
+/* ===================== */
+.admin-berita-page {
+  padding: 1.5rem;
+  overflow-x: auto;
+  color: #333;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.admin-berita-page h2 {
+  font-size: 1.5rem;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  animation: fadeInDown 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* ===================== */
+/* TOOLBAR DAN TOMBOL */
+/* ===================== */
+.toolbar {
+  margin-bottom: 1rem;
+}
+
+.btn-save,
+.btn-cancel,
+.btn-edit,
+.btn-delete {
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-save {
+    background-color: #198754;
+    color: white;
+}
+
+.btn-save:hover {
+  background-color: #157347;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-edit:hover {
+  background-color: #ec971f;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c9302c;
+}
+
+/* ===================== */
+/* TABEL BERITA */
+/* ===================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.berita-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 900px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.berita-table th,
+.berita-table td {
+  border: 1px solid #c0c0c0af;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+.berita-table th {
+  background: #d0d5e6;
+  text-align: center;
+}
+/* Kolom No */
+.berita-table td:nth-child(1),
+.berita-table th:nth-child(1) {
+  width: 50px;
+  text-align: center;
+}
+
+/* Kolom Judul */
+.berita-table td:nth-child(2),
+.berita-table th:nth-child(2) {
+  width: 200px;
+}
+
+/* Kolom Tanggal */
+.berita-table td:nth-child(3),
+.berita-table th:nth-child(3) {
+  width: 140px;
+  text-align: center;
+}
+
+/* Kolom Isi */
+.berita-table td:nth-child(4),
+.berita-table th:nth-child(4) {
+  width: 400px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Kolom Gambar */
+.berita-table td:nth-child(5),
+.berita-table th:nth-child(5) {
+  width: 100px;
+  text-align: center;
+}
+
+/* Kolom Aksi */
+.berita-table td:nth-child(6),
+.berita-table th:nth-child(6) {
+  width: 150px;
+  text-align: center;
+}
+
+.berita-table td img {
+  max-width: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.wrap-text {
+  white-space: normal;
+  word-break: break-word;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ===================== */
+/* MODAL */
+/* ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal {
+  background: white;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===================== */
+/* FORM INPUT MODAL */
+/* ===================== */
+.modal-form {
+  padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-form input,
+.modal-form textarea {
+  margin-bottom: 0.9rem;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 100%;
+  resize: vertical;
+}
+
+/* ===================== */
+/* PREVIEW GAMBAR */
+/* ===================== */
+.preview-img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* ===================== */
+/* FOOTER MODAL */
+/* ===================== */
+.modal-footer {
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  background-color: #f9f9f9;
+}
+
+/* ===================== */
+/* RESPONSIVE STYLES */
+/* ===================== */
+@media (max-width: 768px) {
+  .modal {
+    width: 100%;
+    max-height: 95vh;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-footer button {
+    width: 100%;
+  }
+}
+.editable-div {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  background-color: white;
+  outline: none;
+  margin-bottom: 1rem;
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: plaintext !important;
+}
+
+.editable-div:focus {
+  border-color: #198754;
+}
+.editable-div[contenteditable]:empty::before {
+  content: attr(data-placeholder);
+  color: #888;
+  pointer-events: none;
+}
+/* Sudut melengkung atas tabel */
+.berita-table thead tr th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.berita-table thead tr th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Sudut melengkung bawah tabel (opsional) */
+.berita-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.berita-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}

@@ -1,0 +1,60 @@
+<section class="galeri-container">
+    <div class="left-text">
+      <h1>
+        RUMAH <br />
+        BUMN <br />
+        <em>Semarang</em>
+      </h1>
+    </div>
+    <div class="right-gallery">
+      <div
+        v-for="(item, index) in galleryItems"
+        :key="index"
+        class="gallery-item"
+        @click="openModal(item)"
+        :style="{ '--animation-delay': `${index * 0.1}s` }"
+      >
+        <img :src="item.src" :alt="item.alt" class="gallery-img" />
+      </div>
+    </div>
+
+    <div v-if="showModal" class="modal" @click.self="closeModal">
+      <div class="modal-content-wrapper">
+        <img class="modal-content" :src="modalImage" />
+        <div class="modal-caption">{{ modalCaption }}</div>
+      </div>
+      <span class="close" @click="closeModal">&times;</span>
+    </div>
+  </section>
+</template>
+=======
+<template>
+  <section class="galeri-container">
+    <div class="left-text">
+      <h1>
+        RUMAH <br />
+        BUMN <br />
+        <em>Semarang</em>
+      </h1>
+    </div>
+    <div class="right-gallery">
+      <div
+        v-for="(item, index) in galleryItems"
+        :key="index"
+        class="gallery-item"
+        @click="openModal(item)"
+        :style="{ '--animation-delay': `${index * 0.1}s` }"
+      >
+        <img :src="item.src" :alt="item.alt" class="gallery-img" />
+      </div>
+    </div>
+
+    <div v-if="showModal" class="modal" @click.self="closeModal">
+      <div class="modal-content-wrapper">
+        <img class="modal-content" :src="modalImage" />
+        <div class="modal-caption">{{ modalCaption }}</div>
+      </div>
+      <span class="close" @click="closeModal">&times;</span>
+    </div>
+  </section>
+</template>

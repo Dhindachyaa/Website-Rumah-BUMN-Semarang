@@ -1,0 +1,250 @@
+/* Import Google Fonts - HARUS DI PALING ATAS */
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800;900&display=swap');
+
+h1 {
+  font-family: 'Funnel Display', 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  margin-top: auto;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+/* Body font */
+body, html {
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* === WRAPPER UTAMA === */
+.hubungi-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px; /* Consistent max-width */
+  margin: 0 auto; /* Center wrapper */
+  box-sizing: border-box;
+  overflow: visible;
+  position: relative;
+  padding: 0 20px; /* Add consistent padding */
+}
+
+/* === TEKS DENGAN PADDING === */
+.hubungi-container {
+  flex: 1 1 60%;
+  padding: 0 2rem 10rem 2rem; 
+  max-width: 1200px;
+  margin: 0 auto; /* Center container */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp-360e97ee 0.6s ease-out forwards;
+}
+
+/* === HEADER STYLING === */
+.hubungi-header {
+  color: #00529C;
+  padding: 8rem 0 2rem; /* Exact same as news-header */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hubungi-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,0 1000,100"/></svg>');
+  background-size: cover;
+}
+
+.hubungi-header h1 {
+  font-size: 3rem;
+  font-weight: 800; /* Same as news-header */
+  font-family: 'Funnel Display', 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 1rem; /* Same as news-header */
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp-360e97ee 0.6s ease-out forwards;
+}
+
+/* Animasi fadeInUp */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === TEKS === */
+.hubungi-text h1 {
+  color: #0E3B4F;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: left; 
+  font-family: 'Funnel Display', 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Apply Manrope to all elements */
+body, html, .hubungi-container, .hubungi-text, .contact-list, .footer, .footer-content, .footer-logo, .address-container, .footer-links, .footer-social, .footer-contact, .footer-bottom {
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.hubungi-text p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #333333;
+  font-weight: 800;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 400;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.contact-list .icon {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+  color: #184481;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === GAMBAR MENTOK KANAN === */
+.hubungi-image {
+  position: absolute;
+  top: 1rem; /* sejajarkan dengan padding atas teks */
+  right: -7rem;
+  width: 547px;
+  height: auto;
+  z-index: 0;
+}
+
+.hubungi-image img {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-top: -4rem;
+}
+
+
+/* === CONTAINER UNTUK LAYOUT MODERN === */
+.hubungi-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === ANIMATION CLASSES === */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--animation-delay, 0s);
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIF === */
+@media (max-width: 768px) {
+  .hubungi-header {
+    padding: 8rem 0 1.5rem; /* Exact same as news-header */
+  }
+
+  .hubungi-header h1 {
+    font-size: 2rem; /* Same as news-header */
+  }
+
+  .hubungi-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px; /* Consistent mobile padding */
+  }
+
+  .hubungi-container {
+    padding: 2rem 1rem;
+    max-width: 100%;
+  }
+
+  .hubungi-text h1 {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.8rem;
+    text-align: center; /* Center on mobile */
+  }
+
+  .hubungi-image {
+    position: static;
+    width: 70%;
+    margin: 2rem 0 0 0; /* Reset margin */
+    margin-top: 5rem;
+  }
+  
+  .container {
+    padding: 0 15px; /* Same as news */
+  }
+}
+
+@media (max-width: 480px) {
+  .hubungi-header h1 {
+    font-size: 1.8rem; /* Same as news-header */
+  }
+
+  .hubungi-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hubungi-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .hubungi-image {
+    width: 90%;
+  }
+
+  .hubungi-image img {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-top: -4rem;
+  margin-left: 4rem;
+}
+
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  .hubungi-header h1,
+  .animate-on-scroll {
+    animation: none;
+    transition: none;
+  }
+}

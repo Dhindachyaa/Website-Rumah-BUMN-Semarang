@@ -1,0 +1,405 @@
+/* ===================== */
+/* ADMIN UMKM PAGE BASE */
+/* ===================== */
+.admin-umkm-page {
+  color: #333;
+  overflow-x: auto;
+  padding: 1.5rem;
+}
+
+.admin-umkm-page h2 {
+  animation: fadeInDown 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* ===================== */
+/* TOMBOL GLOBAL STYLES  */
+/* ===================== */
+button {
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-save {
+  background-color: #198754;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #157347;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-edit:hover {
+  background-color: #ec971f;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c9302c;
+}
+
+/* ===================== */
+/* TOOLBAR TAMBAH BUTTON */
+/* ===================== */
+.toolbar {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.toolbar button {
+  animation: fadeInDown 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.table-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ===================== */
+/* TABEL UNTUK DESKTOP   */
+/* ===================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.umkm-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 900px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.umkm-table th,
+.umkm-table td {
+  border: 1px solid #c0c0c0af;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+.umkm-table th {
+  background: #d0d5e6;
+  text-align: center;
+}
+
+/* ===================== */
+/* UKURAN KHUSUS KOLOM   */
+/* ===================== */
+.umkm-table th:nth-child(1),
+.umkm-table td:nth-child(1) {
+  width: 50px;
+  text-align: center;
+}
+
+.umkm-table th:nth-child(2),
+.umkm-table td:nth-child(2) {
+  width: 160px;
+  word-break: break-word;
+}
+
+.umkm-table th:nth-child(3),
+.umkm-table td:nth-child(3) {
+  width: 150px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.umkm-table th:nth-child(4),
+.umkm-table td:nth-child(4) {
+  width: 160px;
+  word-break: break-word;
+}
+
+.umkm-table th:nth-child(5),
+.umkm-table td:nth-child(5) {
+  width: 200px;
+  word-break: break-word;
+}
+
+.umkm-table th:nth-child(6),
+.umkm-table td:nth-child(6) {
+  width: 250px;
+  word-break: break-word;
+}
+
+.umkm-table th:nth-child(7),
+.umkm-table td:nth-child(7) {
+  width: 180px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.umkm-table th:nth-child(8),
+.umkm-table td:nth-child(8) {
+  width: 100px;
+  text-align: center;
+}
+
+.umkm-table th:nth-child(9),
+.umkm-table td:nth-child(9) {
+  width: 100px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.umkm-table td.wrap-text {
+  white-space: normal;
+  word-break: break-word;
+  max-width: 250px;
+  text-align: justify;
+}
+
+.umkm-table img {
+  max-width: 80px;
+  border-radius: 6px;
+}
+
+/* ===================== */
+/* MODAL TAMBAH / EDIT   */
+/* ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal {
+  background: white;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-form {
+  padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+  margin-bottom: 0.9rem;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.modal-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.deskripsi-editor {
+  width: 100%;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-height: 100px;
+  max-height: 250px;
+  resize: vertical;
+  overflow-y: auto;
+  background-color: #fff;
+  outline: none;
+  transition: border 0.2s ease;
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  background-color: #f9f9f9;
+}
+
+/* ===================== */
+/* CARD UNTUK MOBILE     */
+/* ===================== */
+.umkm-card-list {
+  display: none;
+}
+
+.umkm-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.umkm-card p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+.umkm-card .image-container img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.card-actions {
+  margin-top: 0.8rem;
+}
+
+.card-actions button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
+
+/* ===================== */
+/* PAGINATION            */
+/* ===================== */
+.pagination {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 0.3rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: bold;
+  margin: 0 0.5rem;
+}
+
+/* ===================== */
+/* RESPONSIVE STYLES     */
+/* ===================== */
+@media (max-width: 768px) {
+  .table-responsive {
+    display: none;
+  }
+
+  .umkm-card-list {
+    display: block;
+  }
+
+  .modal {
+    width: 100%;
+    max-height: 95vh;
+  }
+
+  .modal-form input,
+  .modal-form select,
+  .modal-form textarea,
+  .deskripsi-editor {
+    font-size: 1rem;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-footer button {
+    width: 100%;
+  }
+}
+
+/* ===================== */
+/* ANIMASI UTAMA         */
+/* ===================== */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

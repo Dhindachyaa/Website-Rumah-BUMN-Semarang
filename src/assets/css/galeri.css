@@ -1,0 +1,602 @@
+/* Import Google Fonts - HARUS DI PALING ATAS */
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background:
+    radial-gradient(1000px circle at top left, #00539c85, #ffffff, transparent 100%),
+    radial-gradient(1000px circle at top right, #75ffc685, #ffffff, transparent 100%);
+  color: #1c1c1c;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== RESPONSIVE GALLERY CONTENT ===== */
+.gallery-content {
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: transparent;
+}
+
+.gallery-header {  
+  background: transparent; 
+  color: #00529C;
+  padding: 8rem 0 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,0 1000,100"/></svg>');
+  background-size: cover;
+}
+
+.gallery-header h1 {
+  font-size: 3rem;
+  font-weight: 700 !important;
+  font-family: 'Funnel Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp-360e97ee 0.6s ease-out forwards;
+}
+
+/* Animasi fadeInUp seperti di berita */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add styling for all headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Funnel Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+/* Gallery section headers */
+.gallery-section h2 {
+  font-family: 'Funnel Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+.gallery-section h2.animate-on-scroll {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Main Gallery Container */
+.right-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* When full width is needed */
+.right-gallery.full-width {
+  max-width: 100%;
+}
+
+/* Gallery Item - Image Overlay Style */
+.gallery-item {
+  display: block;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(180, 180, 180, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  height: 280px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(133, 133, 133, 0.15);
+}
+
+/* Gallery Image */
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.05);
+}
+
+/* Caption - SIMPLE APPROACH */
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  color: white;
+  padding: 3rem 1rem 1rem;
+  text-align: left;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+/* Title - 1 line only */
+.caption strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700 !important;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: white;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* Text setelah strong (tanpa wrapper div) */
+.caption strong + * {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+/* Jika ada text langsung setelah strong tanpa tag pembungkus */
+.caption::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* Description wrapper - untuk menampung teks setelah <br> */
+.caption-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fallback untuk browser lama */
+.caption-desc-fallback {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+  height: 2.6em;
+  overflow: hidden;
+  position: relative;
+}
+
+.caption-desc-fallback::after {
+  content: "...";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.85) 50%);
+  padding-left: 20px;
+}
+
+/* ===== MODAL STYLES ===== */
+
+.galeri-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.galeri-modal-content-wrapper {
+  position: relative;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background-color: #0000009d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: zoomIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes zoomIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.galeri-modal-content {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  max-height: 70vh;
+}
+
+.galeri-modal-caption {
+  margin: 10px auto 20px auto;
+  display: block;
+  width: 100%;
+  max-width: 90vw;
+  color: #fff;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0 0 8px 8px;
+  box-shadow: none;
+  text-shadow: none;
+  word-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.galeri-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  z-index: 1100;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.galeri-close:hover {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.2);
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: var(--animation-delay, 0s);
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Desktop Large (1200px+) */
+@media (min-width: 1200px) {
+  .gallery-content {
+    padding: 0 3rem 1rem;
+  }
+  
+  .right-gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Desktop Medium (992px - 1199px) */
+@media (max-width: 1199px) {
+  .gallery-content {
+    padding: 2.5rem 3rem;
+  }
+}
+
+/* Tablet Large (992px - 768px) */
+@media (max-width: 992px) {
+  .gallery-content {
+    padding: 2rem 2rem;
+  }
+  
+  .gallery-section {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .gallery-section h2 {
+    font-size: 2.2rem;
+    padding-top: 2rem;
+  }
+  
+  .right-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .gallery-item {
+    height: 240px;
+  }
+}
+
+/* Tablet (768px - 991px) */
+@media (max-width: 768px) {
+  .gallery-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .gallery-section {
+    padding: 2rem 1rem;
+  }
+  
+  .gallery-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .gallery-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .right-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .gallery-item {
+    height: 220px;
+  }
+  
+  .caption {
+    padding: 2.5rem 1rem 1rem;
+  }
+  
+  .caption strong {
+    font-size: 13px;
+  }
+  
+  .caption-desc,
+  .caption-desc-fallback {
+    font-size: 11px;
+    height: 2.6em;
+  }
+  
+  .galeri-modal-content-wrapper {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+  
+  .galeri-close {
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Mobile Large (480px - 767px) */
+@media (max-width: 600px) {
+  .gallery-content {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* Mobile Small (480px and below) */
+@media (max-width: 480px) {
+  .gallery-content {
+    padding: 1rem 0.5rem;
+  }
+  
+  .gallery-section {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .gallery-section h2 {
+    font-size: 1.5rem;
+    padding-top: 1rem;
+  }
+  
+  .right-gallery {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .gallery-item {
+    height: 200px;
+  }
+  
+  .caption {
+    padding: 2rem 1rem 1rem;
+  }
+  
+  .caption strong {
+    font-size: 12px;
+  }
+  
+  .caption-desc,
+  .caption-desc-fallback {
+    font-size: 10px;
+    height: 2.6em;
+  }
+  
+  .galeri-modal-caption {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+
+/* Very Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .gallery-content {
+    padding: 0.75rem 0.25rem;
+  }
+  
+  .gallery-section {
+    padding: 1rem 0.25rem;
+  }
+  
+  .right-gallery {
+    padding: 0 0.25rem;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item,
+  .galeri-modal,
+  .galeri-modal-content-wrapper,
+  .galeri-close,
+  .animate-on-scroll,
+  .gallery-header h1 {
+    transition: none;
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .gallery-item {
+    border: 2px solid #000;
+  }
+  
+  .galeri-close {
+    border: 2px solid #fff;
+  }
+}
+
+/* ===== LANDSCAPE ORIENTATION FOR MOBILE ===== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .gallery-content {
+    padding: 1rem 2rem;
+  }
+  
+  .gallery-section {
+    padding: 1.5rem 2rem;
+  }
+  
+  .right-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .gallery-item {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) and (orientation: landscape) {
+  .gallery-content {
+    padding: 0.75rem 1rem;
+  }
+  
+  .right-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .gallery-item {
+    height: 160px;
+  }
+}
+/* ======================= PAGINATION ======================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  font-size: 1rem;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  background-color: #00529b;
+  color: rgb(151, 151, 151);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination button:disabled {
+  background-color: #ffffff;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #002227;
+}
+/* ===== FIX: HILANGKAN RUANG KOSONG DI BAWAH GALERI ===== */
+.gallery-content {
+  padding-bottom: 0 !important;
+  margin-bottom: 2rem !important;
+}
+
+.pagination {
+  margin-bottom: 2rem !important;
+}
+
+.news-page {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
