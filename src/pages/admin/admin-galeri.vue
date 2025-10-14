@@ -187,7 +187,7 @@ export default {
           })
           if (res.status === 200) {
             alert(res.data.message)
-            this.fetchPaginatedGaleri()
+            this.goToPage(this.totalPages)
             this.tutupModal()
           }
         }

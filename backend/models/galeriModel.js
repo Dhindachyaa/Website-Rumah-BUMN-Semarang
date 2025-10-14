@@ -3,7 +3,7 @@ const db = require('../config/db');
 const Galeri = {
   // ✅ Ambil semua data galeri (tanpa pagination)
   getAll: (result) => {
-    db.query('SELECT * FROM galeri ORDER BY created_at DESC', result);
+    db.query('SELECT * FROM galeri ORDER BY created_at ASC', result);
   },
 
   // ✅ Ambil data berdasarkan ID
@@ -43,7 +43,7 @@ const Galeri = {
   // ✅ Ambil galeri dengan pagination
   getPaginated: (limit, offset, result) => {
     db.query(
-      'SELECT * FROM galeri ORDER BY created_at DESC LIMIT ? OFFSET ?',
+      'SELECT * FROM galeri ORDER BY created_at ASC LIMIT ? OFFSET ?',
       [limit, offset],
       result
     );

@@ -24,10 +24,12 @@ router.post('/:id', upload.single('gambar'), (req, res) => {
 // ✅ Hapus berita
 router.delete('/:id', beritaController.remove);
 
-// ✅ Ambil berita berdasarkan ID (letakkan PALING BAWAH!)
-router.get('/:id', beritaController.getById);
-
 // ✅ Hitung total berita
 router.get('/count/dashboard', beritaController.count);
+
+router.get('/terkini', beritaController.getBeritaTerkini);
+
+// ✅ Ambil berita berdasarkan ID (letakkan PALING BAWAH!)
+router.get('/:id', beritaController.getById);
 
 module.exports = router;

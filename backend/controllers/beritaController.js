@@ -4,7 +4,7 @@ const beritaModel = require('../models/beritaModel');
 
 // ✅ Ambil semua berita
 exports.getAll = (req, res) => {
-  beritaModel.getAllBerita((err, data) => {
+  beritaModel.getAllBerita('ASC', (err, data) => {
     if (err) return res.status(500).json({ error: err });
     res.json(data);
   });
@@ -95,5 +95,13 @@ exports.count = (req, res) => {
   beritaModel.countBerita((err, result) => {
     if (err) return res.status(500).json({ error: err });
     res.json(result[0]); // { total: ... }
+  });
+};
+// GET /api/berita/terkini?limit=5
+exports.getBeritaTerkini = (req, res) => {
+  const limit = parseInt(req.query.limit) || 5; // default 5 berita terbaru
+  beritaModel.getLatestBerita(limit, (err, data) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json(data);
   });
 };

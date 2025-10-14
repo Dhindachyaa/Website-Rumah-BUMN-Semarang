@@ -100,6 +100,24 @@ const itemsPerPage = 6
 const isLoading = ref(false)
 const searchTimeout = ref(null)
 
+const beritaTerkini = ref([])
+const fetchBeritaTerkini = async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/berita/terkini', {
+      params: { limit: 5 } // ambil 5 berita terbaru
+    })
+    beritaTerkini.value = res.data.map(item => ({
+      id: item.id,
+      title: item.judul,
+      excerpt: stripHtml(item.isi).slice(0, 120) + '...',
+      imageUrl: item.gambar ? `http://localhost:3000/images/berita/${item.gambar}` : null,
+      date: formatTanggal(item.tanggal)
+    }))
+  } catch (err) {
+    console.error('❌ Gagal memuat berita terkini:', err)
+  }
+}
+
 // Fetch data
 const fetchBerita = async () => {
   try {
@@ -145,7 +163,7 @@ const handleImageError = e => {
 }
 
 // Computed
-const featuredArticle = computed(() => allNews.value[0] || null)
+const featuredArticle = computed(() => allNews.value[allNews.value.length - 1] || null)
 
 const filteredNews = computed(() => {
   let news = allNews.value.slice(1)
@@ -203,6 +221,7 @@ const initScrollAnimations = () => {
 
 onMounted(async () => {
   await fetchBerita()
+  await fetchBeritaTerkini()
   window.addEventListener('scroll', initScrollAnimations)
 })
 

@@ -1,8 +1,9 @@
 const db = require('../config/db');
 
 // Ambil semua berita
-exports.getAllBerita = (result) => {
-  db.query('SELECT * FROM berita ORDER BY tanggal DESC', result);
+exports.getAllBerita = (order = 'DESC', result) => {
+  const sortOrder = order.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
+  db.query(`SELECT * FROM berita ORDER BY tanggal ${sortOrder}`, result);
 };
 
 // Ambil berita berdasarkan ID
@@ -28,4 +29,9 @@ exports.deleteBerita = (id, result) => {
 // Hitung total berita
 exports.countBerita = (result) => {
   db.query('SELECT COUNT(*) AS total FROM berita', result);
+};
+
+// Ambil n berita terbaru (DESC)
+exports.getLatestBerita = (limit, result) => {
+  db.query('SELECT * FROM berita ORDER BY tanggal DESC LIMIT ?', [limit], result);
 };
