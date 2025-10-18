@@ -3,14 +3,10 @@ const path = require('path');
 const fs = require('fs');
 const umkmModel = require('../models/umkmModel');
 
-// Function helper untuk normalize image path
 const normalizeImagePath = (imagePath) => {
  if (!imagePath) return null;
- 
- // Hapus 'images/' prefix jika ada
  let cleanPath = imagePath.replace(/^images\//, '');
- 
- // Pastikan dimulai dengan 'umkm/'
+
  if (!cleanPath.startsWith('umkm/')) {
    cleanPath = `umkm/${cleanPath}`;
  }
@@ -18,7 +14,6 @@ const normalizeImagePath = (imagePath) => {
  return cleanPath;
 };
 
-// GET semua UMKM (untuk frontend/admin, RAW)
 exports.getAll = (req, res) => {
  const search = req.query.search || '';
  const kategori = req.query.kategori || '';
@@ -44,7 +39,6 @@ exports.getAll = (req, res) => {
  db.query(sql, params, (err, result) => {
    if (err) return res.status(500).json({ message: 'Gagal mengambil data', error: err });
    
-   // Normalize image paths untuk semua data
    const normalizedResult = result.map(item => ({
      ...item,
      image_path: normalizeImagePath(item.image_path)
@@ -54,14 +48,12 @@ exports.getAll = (req, res) => {
  });
 };
 
-// GET UMKM by ID
 exports.getById = (req, res) => {
  const id = req.params.id;
  db.query('SELECT * FROM umkm WHERE id = ?', [id], (err, result) => {
    if (err) return res.status(500).json({ message: 'Gagal mengambil data', error: err });
    if (result.length === 0) return res.status(404).json({ message: 'UMKM tidak ditemukan' });
-   
-   // Normalize image path
+
    const umkm = result[0];
    umkm.image_path = normalizeImagePath(umkm.image_path);
    
@@ -69,14 +61,11 @@ exports.getById = (req, res) => {
  });
 };
 
-// POST: Tambah UMKM
 exports.create = (req, res) => {
  console.log('req.body:', req.body)
  console.log('req.file:', req.file)
 
  const { nama, deskripsi, varian, kategori, harga, instagram } = req.body
- 
- // ✅ FIX: Default image tanpa 'images/' prefix
  const image_path = req.file ? `umkm/${req.file.filename}` : 'umkm/rumah-bumn.png';
 
  const sql = `
@@ -91,7 +80,6 @@ exports.create = (req, res) => {
  })
 }
 
-// PUT: Update UMKM
 exports.update = (req, res) => {
  const id = req.params.id;
 
@@ -110,7 +98,6 @@ exports.update = (req, res) => {
      instagram = oldData.instagram
    } = req.body;
 
-   // ✅ FIX: Normalize old image path dan new image path
    const normalizedOldPath = normalizeImagePath(oldData.image_path);
    const newImage = req.file
      ? `umkm/${req.file.filename}`
@@ -127,13 +114,11 @@ exports.update = (req, res) => {
      console.log('Query:', sql);
      console.log('Values:', values);
      if (err) {
-       console.error('❌ SQL ERROR:', err);
+       console.error('SQL ERROR:', err);
        return res.status(500).json({ message: 'Gagal mengupdate data', error: err });
      }
 
-     // ✅ FIX: Hapus gambar lama dengan path yang benar
      if (req.file && oldData.image_path && !oldData.image_path.includes('rumah-bumn.png')) {
-       // Pastikan path dimulai dengan images/
        const oldImagePath = oldData.image_path.startsWith('images/') 
          ? path.join(__dirname, '../public/', oldData.image_path)
          : path.join(__dirname, '../public/images/', oldData.image_path);
@@ -148,7 +133,6 @@ exports.update = (req, res) => {
  });
 };
 
-// DELETE UMKM
 exports.remove = (req, res) => {
  const id = req.params.id;
 
@@ -161,7 +145,6 @@ exports.remove = (req, res) => {
    db.query('DELETE FROM umkm WHERE id = ?', [id], (err) => {
      if (err) return res.status(500).json({ message: 'Gagal menghapus data', error: err });
 
-     // ✅ FIX: Hapus file dengan path yang benar
      if (imagePath && !imagePath.includes('rumah-bumn.png')) {
        const fullPath = imagePath.startsWith('images/') 
          ? path.join(__dirname, '../public/', imagePath)
@@ -177,7 +160,6 @@ exports.remove = (req, res) => {
  });
 };
 
-// GET dengan paginasi
 exports.getPagedUMKM = async (req, res) => {
  const limit = parseInt(req.query.limit) || 20;
  const offset = parseInt(req.query.offset) || 0;
@@ -188,7 +170,6 @@ exports.getPagedUMKM = async (req, res) => {
    umkmModel.getPagedUMKM(limit, offset, search, category, (err, data) => {
      if (err) return res.status(500).json({ error: err.message });
 
-     // ✅ FIX: Normalize image paths
      const normalizedData = data.map(item => ({
        ...item,
        image_path: normalizeImagePath(item.image_path)

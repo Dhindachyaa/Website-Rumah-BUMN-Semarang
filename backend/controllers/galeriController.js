@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const db = require('../config/db');
 
-// ✅ Ambil semua galeri (tanpa pagination)
 exports.getAllGaleri = (req, res) => {
   Galeri.getAll((err, result) => {
     if (err) return res.status(500).json({ message: 'Gagal mengambil data galeri' });
@@ -11,7 +10,6 @@ exports.getAllGaleri = (req, res) => {
   });
 };
 
-// ✅ Ambil galeri dengan pagination
 exports.getPaginatedGaleri = (req, res) => {
   const limit = parseInt(req.query.limit) || 9;
   const offset = parseInt(req.query.offset) || 0;
@@ -38,7 +36,6 @@ exports.getPaginatedGaleri = (req, res) => {
   });
 };
 
-// ✅ Ambil jumlah total galeri
 exports.getGaleriCount = (req, res) => {
   db.query('SELECT COUNT(*) AS total FROM galeri', (err, result) => {
     if (err) return res.status(500).json({ message: 'Gagal menghitung galeri' });
@@ -46,7 +43,6 @@ exports.getGaleriCount = (req, res) => {
   });
 };
 
-// ✅ Tambah galeri baru
 exports.addGaleri = (req, res) => {
   const { judul, deskripsi } = req.body;
   const gambar = req.file?.filename;
@@ -61,7 +57,6 @@ exports.addGaleri = (req, res) => {
   });
 };
 
-// ✅ Update galeri (judul, deskripsi, gambar opsional)
 exports.updateGaleri = (req, res) => {
   const { judul, deskripsi } = req.body;
   const id = req.params.id;
@@ -94,7 +89,6 @@ exports.updateGaleri = (req, res) => {
   });
 };
 
-// ✅ Hapus galeri
 exports.deleteGaleri = (req, res) => {
   const id = req.params.id;
 

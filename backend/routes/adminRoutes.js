@@ -1,19 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/db'); // koneksi MySQL
+const db = require('../config/db'); 
 
-// ========================
-// LOGIN ADMIN
-// ========================
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
-  // Validasi input
   if (!username || !password) {
     return res.status(400).json({ message: 'Username dan password wajib diisi' });
   }
 
-  // Cek user di database
   const query = 'SELECT * FROM admin WHERE username = ? AND password = ?';
   db.query(query, [username, password], (err, result) => {
     if (err) {
@@ -25,7 +20,6 @@ router.post('/login', (req, res) => {
       return res.status(401).json({ message: 'Username atau password salah' });
     }
 
-    // Login berhasil
     return res.status(200).json({
       message: 'Login berhasil',
       user: {
@@ -36,9 +30,6 @@ router.post('/login', (req, res) => {
   });
 });
 
-// ========================
-// GET DATA ADMIN (opsional)
-// ========================
 router.get('/', (req, res) => {
   db.query('SELECT id, username FROM admin', (err, result) => {
     if (err) return res.status(500).json({ message: 'Gagal mengambil data admin' });
@@ -46,9 +37,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// ========================
-// ADD ADMIN (opsional)
-// ========================
 router.post('/add', (req, res) => {
   const { username, password } = req.body;
   if (!username || !password)
@@ -61,9 +49,6 @@ router.post('/add', (req, res) => {
   });
 });
 
-// ========================
-// DELETE ADMIN (opsional)
-// ========================
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   db.query('DELETE FROM admin WHERE id = ?', [id], (err, result) => {

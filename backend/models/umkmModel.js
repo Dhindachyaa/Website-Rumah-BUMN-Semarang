@@ -1,7 +1,5 @@
 const db = require('../config/db');
 
-// Ambil semua UMKM dengan paginasi, filter, dan search
-// ✔️ getPagedUMKM – TIDAK pakai res[0]
 exports.getPagedUMKM = (limit, offset, search, category, result) => {
   let query = `
     SELECT id, nama, deskripsi, varian, kategori, harga, instagram, image_path
@@ -31,8 +29,6 @@ exports.getPagedUMKM = (limit, offset, search, category, result) => {
   });
 };
 
-
-// ✔️ getTotalCount – GUNAKAN res[0]
 exports.getTotalCount = (search, category, callback) => {
   let sql = `SELECT COUNT(*) AS total FROM umkm WHERE 1=1`;
   const params = [];
@@ -53,8 +49,6 @@ exports.getTotalCount = (search, category, callback) => {
   });
 };
 
-
-// Ambil UMKM by ID
 exports.getUMKMById = (id, result) => {
   db.query(
     `SELECT id, nama, deskripsi, varian, kategori, harga, instagram, image_path
@@ -67,7 +61,6 @@ exports.getUMKMById = (id, result) => {
   );
 };
 
-// Tambah UMKM (tanpa menyertakan ID karena auto_increment)
 exports.addUMKM = (data, result) => {
   const sql = `
     INSERT INTO umkm (nama, deskripsi, varian, kategori, harga, instagram, image_path)
@@ -84,7 +77,6 @@ exports.addUMKM = (data, result) => {
   db.query(sql, values, result);
 };
 
-// Update UMKM
 exports.updateUMKM = (id, data, result) => {
   const sql = `
     UPDATE umkm
@@ -103,7 +95,6 @@ exports.updateUMKM = (id, data, result) => {
   db.query(sql, values, result);
 };
 
-// Hapus UMKM
 exports.deleteUMKM = (id, result) => {
   db.query('DELETE FROM umkm WHERE id = ?', [id], result);
 };

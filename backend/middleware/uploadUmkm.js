@@ -5,7 +5,7 @@ const fs = require('fs')
 const uploadPath = path.join(__dirname, '../public/images/umkm')
 
 if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath, { recursive: true })  // auto buat folder jika belum ada
+  fs.mkdirSync(uploadPath, { recursive: true })  
 }
 
 const storage = multer.diskStorage({

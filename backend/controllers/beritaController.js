@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const beritaModel = require('../models/beritaModel');
 
-// ✅ Ambil semua berita
 exports.getAll = (req, res) => {
   beritaModel.getAllBerita('ASC', (err, data) => {
     if (err) return res.status(500).json({ error: err });
@@ -10,7 +9,6 @@ exports.getAll = (req, res) => {
   });
 };
 
-// ✅ Ambil berita berdasarkan ID
 exports.getById = (req, res) => {
   const id = req.params.id;
   beritaModel.getBeritaById(id, (err, data) => {
@@ -20,7 +18,6 @@ exports.getById = (req, res) => {
   });
 };
 
-// ✅ Tambah berita baru
 exports.create = (req, res) => {
   const { judul, tanggal } = req.body;
   let isi = req.body.isi ? req.body.isi.replace(/\n/g, '<br>') : '';
@@ -30,11 +27,10 @@ exports.create = (req, res) => {
 
   beritaModel.insertBerita(data, (err) => {
     if (err) return res.status(500).json({ error: err });
-    res.json({ message: '✅ Berita berhasil ditambahkan' });
+    res.json({ message: 'Berita berhasil ditambahkan' });
   });
 };
 
-// ✅ Update berita (jika ada gambar baru, hapus gambar lama)
 exports.update = (req, res) => {
   const id = req.params.id;
   const { judul, tanggal } = req.body;
@@ -47,12 +43,11 @@ exports.update = (req, res) => {
   const updateBerita = () => {
     beritaModel.updateBerita(data, id, (err) => {
       if (err) return res.status(500).json({ error: err });
-      res.json({ message: '✅ Berita berhasil diperbarui' });
+      res.json({ message: 'Berita berhasil diperbarui' });
     });
   };
 
   if (gambarBaru) {
-    // Cek dan hapus gambar lama
     beritaModel.getBeritaById(id, (err, result) => {
       if (!err && result.length > 0) {
         const gambarLama = result[0].gambar;
@@ -68,7 +63,6 @@ exports.update = (req, res) => {
   }
 };
 
-// ✅ Hapus berita dan gambar
 exports.remove = (req, res) => {
   const id = req.params.id;
 
@@ -85,21 +79,20 @@ exports.remove = (req, res) => {
 
     beritaModel.deleteBerita(id, (err) => {
       if (err) return res.status(500).json({ error: err });
-      res.json({ message: '🗑️ Berita berhasil dihapus' });
+      res.json({ message: 'Berita berhasil dihapus' });
     });
   });
 };
 
-// ✅ Hitung total berita
 exports.count = (req, res) => {
   beritaModel.countBerita((err, result) => {
     if (err) return res.status(500).json({ error: err });
-    res.json(result[0]); // { total: ... }
+    res.json(result[0]); 
   });
 };
-// GET /api/berita/terkini?limit=5
+
 exports.getBeritaTerkini = (req, res) => {
-  const limit = parseInt(req.query.limit) || 5; // default 5 berita terbaru
+  const limit = parseInt(req.query.limit) || 5; 
   beritaModel.getLatestBerita(limit, (err, data) => {
     if (err) return res.status(500).json({ error: err });
     res.json(data);
